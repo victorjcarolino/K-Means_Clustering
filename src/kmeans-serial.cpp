@@ -311,7 +311,9 @@ int main(int argc, char *argv[])
 {
 	int total_points, total_values, K, max_iterations, has_name;
 
-	string filename = argv[1];
+	string filename = "datasets/";
+    string dataset = argv[1];
+    filename.insert(filename.end(), dataset.begin(), dataset.end());
 
 	ifstream inputFile(filename);
 

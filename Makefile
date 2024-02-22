@@ -1,56 +1,50 @@
-# Compiler
-CXX = g++
+# File being made
+FILE := naive-kmeans-parallel
 
-BITS = 64
+# Compiler
+CXX := g++
+
+# Default size
+BITS := 64
 
 # Compiler flags
 TBB_PATH = /opt/tbb-2021.8.0 
 CXXFLAGS = -MMD -ggdb -O3 -std=gnu++17 -m$(BITS) -I/opt/tbb-2021.8.0/include
-LDFLAGS	 = -m$(BITS) -lpthread -lrt -L/opt/tbb-2021.8.0/libtbb.so -ltbb
+LDFLAGS	 = -m$(BITS) -lpthread -lrt -L/opt/tbb-2021.8.0/lib64 -ltbb
 
 # Directories
-SRCDIR = src
-BINDIR = bin
-ODIR  = obj64
-
-# Target executable name
-TARGET = $(BINDIR)/kmeans-serial
+SRC_DIR := src
+BIN_DIR := bin
+OBJ_DIR  := obj64
 
 # Source files
-SRCS = $(SRCDIR)/kmeans-serial.cpp
-
-# Create the .o names from the CXXFILES
-OFILES = $(patsubst %, $(ODIR)/%.o, $(CXXFILES))
-
-# Create .d files to store dependency information, so that we don't need to
-# clean every time before running make
-DFILES = $(patsubst %.o, %.d, $(OFILES))
+SRCS := $(SRC_DIR)/$(FILE).cpp
 
 # Object files
-OBJS = $(SRCS:.cpp=.o)
+OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRCS))
+DEP_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.d,$(SRCS))
+
+# Targets
+TARGET := $(BIN_DIR)/$(FILE)
 
 all: $(TARGET)
 
 # clean up everything by clobbering the output folder
 clean:
 	@echo cleaning up...
-	@rm -rf $(ODIR)
+	@rm -rf $(OBJ_DIR) $(BIN_DIR)
 
-# build an .o file from a .cc file
-$(ODIR)/%.o: %.cc
-	@echo [CXX] $< "-->" $@
-	@$(CXX) $(CXXFLAGS) -c -o $@ $<
+# build the bin directory
+$(BIN_DIR):
+	mkdir -p $(BIN_DIR)
 
-# Link rule for building the target from .o files
-$(TARGET): $(OFILES)
-	@echo [LD] $^ "-->" $@
-	@$(CXX) -o $@ $^ $(LDFLAGS)
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
-.cpp.o:
-    $(CXX) $(CXXFLAGS) -c $<  -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Remember that 'all' and 'clean' aren't real targets
-.PHONY: all clean
+$(TARGET): $(OBJ_FILES) | $(BIN_DIR)
+	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
 
-# Pull in all dependencies
--include $(DFILES)
+-include $(DEP_FILES)

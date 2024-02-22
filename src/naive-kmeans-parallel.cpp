@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <chrono>
 #include <fstream>
+#include <tbb/tbb.h>
 
 using namespace std;
 
@@ -161,11 +162,21 @@ private:
 			sum = 0.0;
 
             // compute the Euclidean distance from each point to the center of the cluster
-            // parallel reduce
-			for(int j = 0; j < total_values; j++)
-			{
-				sum += pow(clusters[i].getCentralValue(j) - point.getValue(j), 2.0);
-			}
+			sum = tbb::parallel_reduce(
+                tbb::blocked_range<int>(0, total_values),
+                0.0,
+                [&](tbb::blocked_range<int> r, double init) -> double {
+                    double sum = init;
+                    for(int j = r.begin(); j < r.end(); j++)
+                    {
+                        sum += pow(clusters[i].getCentralValue(j) - point.getValue(j), 2.0);
+                    }
+                    return sum;
+                },
+                [&](double x, double y) -> double {
+                    return x + y;
+                }
+            );
 			dist = sqrt(sum);
 
             // if the distance is less than the minimum distance, update the minimum distance and the ID of the cluster center
@@ -311,7 +322,9 @@ int main(int argc, char *argv[])
 {
 	int total_points, total_values, K, max_iterations, has_name;
 
-	string filename = argv[1];
+	string filename = "datasets/";
+    string dataset = argv[1];
+    filename.insert(filename.end(), dataset.begin(), dataset.end());
 
 	ifstream inputFile(filename);
 
