@@ -34,6 +34,14 @@ public:
 		id_cluster = -1;
 	}
 
+	Point()
+	{
+		this->id_point = 0;
+		total_values = 0;
+		this->values = new vector<double, tbb::cache_aligned_allocator<double>>;
+		this->name = "";
+	}
+
 	int getID()
 	{
 		return id_point;
@@ -68,7 +76,41 @@ public:
 	{
 		return name;
 	}
+
+	Point operator+=(const Point& p) {
+		for 
+	}
+
 };
+
+// code taken from Structured Parallel Programming
+struct sum_and_count {
+	sum_and_count() : sum(), count(0) {}
+	Point sum;
+	size_t count;
+
+	void clear() {
+		sum = Point();
+		count = 0;
+	}
+
+	void tally(const Point &p) {
+		sum += p;
+		++count;
+	}
+
+	Point mean() const {
+		return sum / count;
+	}
+}
+
+// code taken from Structured Parallel Programming
+class view {
+	view ( const view &v ); // Deny copy constructor
+	void operator=( const view &v ); // Deny assignment
+public:
+	sum_and_count *array;
+}
 
 class Cluster
 {
@@ -169,7 +211,7 @@ private:
 				return x + y;
 			}
 		);
-		min_dist = sum;
+		min_dist = sqrt(sum);
         
         // compute the distance from the point to the center of each cluster
 		for(int i = 1; i < K; i++)
@@ -197,7 +239,7 @@ private:
                     return x + y;
                 }
             );
-			dist = sum;
+			dist = sqrt(sum);
 
             // if the distance is less than the minimum distance, update the minimum distance and the ID of the cluster center
 			if(dist < min_dist)
@@ -247,6 +289,7 @@ public:
 				}
 			}
 		}
+        
         auto end_phase1 = chrono::high_resolution_clock::now();
         
 		int iter = 1;
