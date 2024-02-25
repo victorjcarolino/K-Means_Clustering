@@ -8,8 +8,10 @@
 #include <algorithm>
 #include <chrono>
 #include <fstream>
+#include <limits>
 #include <tbb/tbb.h>
 #include <tbb/cache_aligned_allocator.h>
+#include <tbb/enumerable_thread_specific.h>
 
 using namespace std;
 
@@ -146,66 +148,33 @@ private:
 	// return ID of nearest center (uses euclidean distance)
 	int getIDNearestCenter(Point point)
 	{
+
 		double sum = 0.0, min_dist;
 		int id_cluster_center = 0;
 
         // compute the Euclidean distance from each point to the center of the first cluster
-		// for(int i = 0; i < total_values; i++)
-		// {
-		// 	sum += pow(clusters[0].getCentralValue(i) - point.getValue(i), 2.0);
-		// }
-		sum = tbb::parallel_reduce(
-			tbb::blocked_range<int>(0, total_values),
-			0.0,
-			[&](tbb::blocked_range<int> r, double init) -> double {
-				double sum = init;
-				for(int i = r.begin(); i < r.end(); i++)
-				{
-					sum += pow(clusters[0].getCentralValue(i) - point.getValue(i), 2.0);
-				}
-				return sum;
-			},
-			[&](double x, double y) -> double {
-				return x + y;
-			}
-		);
-		min_dist = sum;
-        
-        // compute the distance from the point to the center of each cluster
-		for(int i = 1; i < K; i++)
-		{
-			double dist;
-			sum = 0.0;
-
-            // compute the Euclidean distance from each point to the center of the cluster
-			// for (int j = 0; j < total_values; j++) 
-			// {
-			// 	sum += pow(clusters[i].getCentralValue(j) - point.getValue(j), 2.0);
-			// }
-			sum = tbb::parallel_reduce(
-                tbb::blocked_range<int>(0, total_values),
-                0.0,
-                [&](tbb::blocked_range<int> r, double init) -> double {
-                    double sum = init;
-                    for(int j = r.begin(); j < r.end(); j++)
-                    {
-                        sum += pow(clusters[i].getCentralValue(j) - point.getValue(j), 2.0);
-                    }
-                    return sum;
-                },
-                [&](double x, double y) -> double {
-                    return x + y;
-                }
-            );
-			dist = sum;
-
-            // if the distance is less than the minimum distance, update the minimum distance and the ID of the cluster center
-			if(dist < min_dist)
-			{
-				min_dist = dist;
-				id_cluster_center = i;
-			}
+		for (size_t i = 0; i < total_values; i++) {
+			sum += pow(clusters[0].getCentralValue(i) - point.getValue(i), 2.0);
 		}
+
+		min_dist = sum;
+
+        // compute the distance from the point to the center of each cluster
+		tbb::parallel_for(tbb::blocked_range<int>(1, K), [&](const tbb::blocked_range<int>& r) {
+			for (int i = r.begin(); i < r.end(); i++) {
+				double dist = 0.0;
+
+				for (int j = 0; j < total_values; j++) {
+					double diff = clusters[i].getCentralValue(j) - point.getValue(j);
+					dist += pow(diff, 2.0);
+				};
+
+				if (dist < min_dist) {
+					min_dist = dist;
+					id_cluster_center = i;
+				}
+			}
+		});
 
 		return id_cluster_center;
 	}
@@ -276,39 +245,28 @@ public:
 			}
 
 			// recalculating the center of each cluster
-			for(int i = 0; i < K; i++)
-			{
-				for(int j = 0; j < total_values; j++)
-				{
-					int total_points_cluster = clusters[i].getTotalPoints();
-					double sum = 0.0;
-					
-					if(total_points_cluster > 0)
-					{
-						// compute the Euclidean distance from each point to the center of the cluster
-						// for(int p = 0; p < total_points_cluster; p++) {
-                        //     sum += clusters[i].getPoint(p).getValue(j);
-                        // }
-						sum = tbb::parallel_reduce(
-							tbb::blocked_range<int>(0, total_points_cluster),
-							0.0,
-							[&](tbb::blocked_range<int> r, double init) -> double {
-								double sum = init;
-								for(int p = r.begin(); p < r.end(); p++)
-								{
+			tbb::parallel_for(tbb::blocked_range<size_t>(0, K),
+				[&](const tbb::blocked_range<size_t>& r) {
+					for (size_t i = r.begin(); i < r.end(); i++) {
+						for(int j = 0; j < total_values; j++)
+						{
+							int total_points_cluster = clusters[i].getTotalPoints();
+							double sum = 0.0;
+							
+							if(total_points_cluster > 0)
+							{
+								//compute the Euclidean distance from each point to the center of the cluster
+								for(int p = 0; p < total_points_cluster; p++) {
 									sum += clusters[i].getPoint(p).getValue(j);
 								}
-								return sum;
-							},
-							[&](double x, double y) -> double {
-								return x + y;
+
+								// set the central value of a cluster
+								clusters[i].setCentralValue(j, sum / total_points_cluster);
 							}
-						);
-						// set the central value of a cluster
-						clusters[i].setCentralValue(j, sum / total_points_cluster);
+						}
 					}
 				}
-			}
+			);
 
 			if(done == true || iter >= max_iterations)
 			{

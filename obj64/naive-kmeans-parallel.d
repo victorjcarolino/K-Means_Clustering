@@ -136,4 +136,6 @@ obj64/naive-kmeans-parallel.o: src/naive-kmeans-parallel.cpp \
  /opt/tbb-2021.8.0/include/oneapi/tbb/tick_count.h \
  /opt/tbb-2021.8.0/include/oneapi/tbb/version.h \
  /opt/tbb-2021.8.0/include/tbb/cache_aligned_allocator.h \
- /opt/tbb-2021.8.0/include/tbb/../oneapi/tbb/cache_aligned_allocator.h
+ /opt/tbb-2021.8.0/include/tbb/../oneapi/tbb/cache_aligned_allocator.h \
+ /opt/tbb-2021.8.0/include/tbb/enumerable_thread_specific.h \
+ /opt/tbb-2021.8.0/include/tbb/../oneapi/tbb/enumerable_thread_specific.h
