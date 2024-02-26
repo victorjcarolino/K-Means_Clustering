@@ -277,20 +277,20 @@ public:
 		{
 			int total_points_cluster =  clusters[i].getTotalPoints();
 
-			cout << "Cluster " << clusters[i].getID() + 1 << endl;
-			for(int j = 0; j < total_points_cluster; j++)
-			{
-				cout << "Point " << clusters[i].getPoint(j).getID() + 1 << ": ";
-				for(int p = 0; p < total_values; p++)
-					cout << clusters[i].getPoint(j).getValue(p) << " ";
+			// cout << "Cluster " << clusters[i].getID() + 1 << endl;
+			// for(int j = 0; j < total_points_cluster; j++)
+			// {
+			// 	cout << "Point " << clusters[i].getPoint(j).getID() + 1 << ": ";
+			// 	for(int p = 0; p < total_values; p++)
+			// 		cout << clusters[i].getPoint(j).getValue(p) << " ";
 
-				string point_name = clusters[i].getPoint(j).getName();
+			// 	string point_name = clusters[i].getPoint(j).getName();
 
-				if(point_name != "")
-					cout << "- " << point_name;
+			// 	if(point_name != "")
+			// 		cout << "- " << point_name;
 
-				cout << endl;
-			}
+			// 	cout << endl;
+			// }
 
 			cout << "Cluster values: ";
 

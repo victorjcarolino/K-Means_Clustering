@@ -12,6 +12,7 @@
 #include <tbb/tbb.h>
 #include <tbb/cache_aligned_allocator.h>
 #include <tbb/enumerable_thread_specific.h>
+#include <tbb/concurrent_vector.h>
 
 using namespace std;
 
@@ -149,7 +150,8 @@ private:
 	int getIDNearestCenter(Point point)
 	{
 
-		double sum = 0.0, min_dist;
+		double sum = 0.0; 
+		double min_dist;
 		int id_cluster_center = 0;
 
         // compute the Euclidean distance from each point to the center of the first cluster
@@ -160,6 +162,11 @@ private:
 		min_dist = sum;
 
         // compute the distance from the point to the center of each cluster
+		
+		tbb::concurrent_vector<pair<double, int>> d_c(K);
+
+		d_c.push_back(make_pair(min_dist, 0));
+
 		tbb::parallel_for(tbb::blocked_range<int>(1, K), [&](const tbb::blocked_range<int>& r) {
 			for (int i = r.begin(); i < r.end(); i++) {
 				double dist = 0.0;
@@ -169,14 +176,22 @@ private:
 					dist += pow(diff, 2.0);
 				};
 
-				if (dist < min_dist) {
-					min_dist = dist;
-					id_cluster_center = i;
-				}
+				d_c.push_back(make_pair(dist, i));
+
+				// if (dist < min_dist) {
+				// 	min_dist = dist;
+				// 	id_cluster_center = i;
+				// }
 			}
 		});
 
-		return id_cluster_center;
+		tbb::parallel_sort(d_c.begin(), d_c.end(),
+			[](const auto& a, const auto& b) {
+				return a.first < b.first;
+			}
+		);
+
+		return d_c[0].second;
 	}
 
 public:
@@ -283,20 +298,20 @@ public:
 		{
 			int total_points_cluster =  clusters[i].getTotalPoints();
 
-			cout << "Cluster " << clusters[i].getID() + 1 << endl;
-			for(int j = 0; j < total_points_cluster; j++)
-			{
-				cout << "Point " << clusters[i].getPoint(j).getID() + 1 << ": ";
-				for(int p = 0; p < total_values; p++)
-					cout << clusters[i].getPoint(j).getValue(p) << " ";
+			// cout << "Cluster " << clusters[i].getID() + 1 << endl;
+			// for(int j = 0; j < total_points_cluster; j++)
+			// {
+			// 	cout << "Point " << clusters[i].getPoint(j).getID() + 1 << ": ";
+			// 	for(int p = 0; p < total_values; p++)
+			// 		cout << clusters[i].getPoint(j).getValue(p) << " ";
 
-				string point_name = clusters[i].getPoint(j).getName();
+			// 	string point_name = clusters[i].getPoint(j).getName();
 
-				if(point_name != "")
-					cout << "- " << point_name;
+			// 	if(point_name != "")
+			// 		cout << "- " << point_name;
 
-				cout << endl;
-			}
+			// 	cout << endl;
+			// }
 
 			cout << "Cluster values: ";
 
