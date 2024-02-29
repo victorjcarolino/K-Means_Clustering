@@ -11,7 +11,8 @@
 #include <fstream>
 #include <numeric>
 #include <tbb/tbb.h>
-#include <mutex>
+#include <tbb/enumerable_thread_specific.h>
+
 
 using namespace std;
 
@@ -33,12 +34,12 @@ public:
 			this->values.push_back(values[i]);
 
 		this->name = name;
-		id_cluster = -1;
+		this->id_cluster = -1;
 	}
 
 	int getID()
 	{
-		return id_point;
+		return this->id_point;
 	}
 
 	void setCluster(int id_cluster)
@@ -48,12 +49,12 @@ public:
 
 	int getCluster()
 	{
-		return id_cluster;
+		return this->id_cluster;
 	}
 
 	double getValue(int index)
 	{
-		return values[index];
+		return this->values[index];
 	}
 
 	int getTotalValues()
@@ -63,12 +64,12 @@ public:
 
 	void addValue(double value)
 	{
-		values.push_back(value);
+		this->values.push_back(value);
 	}
 
 	string getName()
 	{
-		return name;
+		return this->name;
 	}
 };
 
@@ -77,8 +78,10 @@ class Cluster
 private:
 	int id_cluster;
 	vector<double> central_values;
-	vector<Point> points;
+	vector<double> intermediate_central_values;
+	int total_points = 0;
 	int total_values;
+	
 
 public:
 	Cluster(int id_cluster, Point point)
@@ -86,63 +89,64 @@ public:
 		this->id_cluster = id_cluster;
 
 		total_values = point.getTotalValues();
+		
+		this->total_points++;
 
-		for(int i = 0; i < total_values; i++)
+		for(int i = 0; i < total_values; i++) {
+			this->intermediate_central_values.push_back(point.getValue(i));
 			this->central_values.push_back(point.getValue(i));
-
-		this->points.push_back(point);
-	}
-
-	void addPoint(Point point)
-	{
-		this->points.push_back(point);
-	}
-
-	bool removePoint(int id_point)
-	{
-		int total_points = this->points.size();
-		for(int i = 0; i < total_points; i++)
-		{
-			if(this->points[i].getID() == id_point)
-			{
-				this->points.erase(this->points.begin() + i);
-				return true;
-			}
 		}
-		return false;
 	}
 
-	double getCentralValue(int index)
-	{
+	void addPoint(Point point) {
+		this->total_points++;
+		tbb::parallel_for(tbb::blocked_range<size_t>(0, total_values),
+			[&](tbb::blocked_range<size_t>& r) {
+				for(auto i = r.begin(); i != r.end(); ++i) {
+					this->intermediate_central_values[i] += point.getValue(i);
+				}
+			}
+		);
+		// for (int i = 0; i < total_values; i++) {
+		// 	this->intermediate_central_values[i] += point.getValue(i);
+		// }
+	}
+
+	void removePoint(Point point) {
+		this->total_points--;
+		tbb::parallel_for(tbb::blocked_range<size_t>(0, total_values),
+			[&](tbb::blocked_range<size_t>& r) {
+				for(auto i = r.begin(); i != r.end(); ++i) {
+					this->intermediate_central_values[i] -= point.getValue(i);
+				}
+			}
+		);
+		// for (int i = 0; i < total_values; i++) {
+		// 	this->intermediate_central_values[i] -= point.getValue(i);
+		// }
+	}
+
+	double getCentralValue(int index) {
 		return this->central_values[index];
 	}
 
-	void setCentralValue(int index, double value)
-	{
-		this->central_values[index] = value;
+	void setCentralValues() {
+		// cout << "Total Points check: " << this->total_points << endl;
+		for (int i = 0; i < total_values; i++) {
+			// cout << "Intermediate value " << i << " before reassigning: " << this->intermediate_central_values[i] << endl;
+			this->central_values[i] = this->intermediate_central_values[i] / this->total_points;
+			// cout << "Intermediate value " << i << " after reassigning: " << this->intermediate_central_values[i] << endl;
+		}
 	}
-
-	Point getPoint(int index)
-	{
-		return this->points[index];
-	}
-
-	// void getAllCentralValues() {
-	// 	cout << "Central Values: ";
-	// 	for (int i = 0; i < total_values; i++) {
-	// 		cout << this->central_values[i] << " ";
-	// 	}
-	// 	cout << endl;
-	// }
 
 	int getTotalPoints()
 	{
-		return this->points.size();
+		return this->total_points;
 	}
 
 	int getID()
 	{
-		return id_cluster;
+		return this->id_cluster;
 	}
 };
 
@@ -164,7 +168,7 @@ private:
 		{
 			sum += pow(clusters[0].getCentralValue(i) - point.getValue(i), 2.0);
 		}
-		min_dist = sqrt(sum);
+		min_dist = sum;
         
         // compute the distance from the point to the center of each cluster
 		for(int i = 1; i < K; i++)
@@ -177,7 +181,7 @@ private:
 			{
 				sum += pow(clusters[i].getCentralValue(j) - point.getValue(j), 2.0);
 			}
-			dist = sqrt(sum);
+			dist = sum;
 
             // if the distance is less than the minimum distance, update the minimum distance and the ID of the cluster center
 			if(dist < min_dist)
@@ -201,6 +205,7 @@ public:
 
 	void run(vector<Point> & points)
 	{
+
 		vector<std::chrono::microseconds> times1;
 		vector<std::chrono::microseconds> times2;
         auto begin = chrono::high_resolution_clock::now();
@@ -233,60 +238,52 @@ public:
         
 		int iter = 1;
 
+		tbb::enumerable_thread_specific<int> id_old_cluster_tls;
+		tbb::enumerable_thread_specific<int> id_nearest_center_tls;
+		
+
         // Stop the loop when the maximum number of iterations is reached or the points are assigned to the nearest cluster center
 		while(true)
 		{
 			bool done = true;
-
 			// associates each point to the nearest center
-
 			auto end_phase2 = chrono::high_resolution_clock::now();
-
 			for(int i = 0; i < total_points; i++)
 			{
 				int id_old_cluster = points[i].getCluster(); // get the cluster designation of point i
 				int id_nearest_center = getIDNearestCenter(points[i]); // calculate the nearest cluster by Euclidian distance of point i
-
+				
                 // if the cluster is anything other than the nearest cluster, remove the point from the old cluster and add it to the nearest cluster
 				if(id_old_cluster != id_nearest_center)
 				{
+					//if the point has already been assigned a cluster, remove it from the old cluster
+					// tbb::parallel_invoke(
+					// 	[&]() {clusters[id_nearest_center].addPoint(points[i]);},
+					// 	[&]() {
+					// 		// this will == -1 when the point has not been assigned a cluster
+					// 		if(id_old_cluster != -1) {
+					// 			// if the point has already been assigned a cluster, remove it from the old cluster
+					// 			clusters[id_old_cluster].removePoint(points[i]);
+					// 		}
+					// 	},
+					// 	[&]() {points[i].setCluster(id_nearest_center);}
+					// );
 					if(id_old_cluster != -1) // this will == -1 when the point has not been assigned a cluster 
 					{
 						// if the point has already been assigned a cluster, remove it from the old cluster
-						// cout << "hit" << endl;
-						clusters[id_old_cluster].removePoint(points[i].getID());
+						clusters[id_old_cluster].removePoint(points[i]);
 					}
 					points[i].setCluster(id_nearest_center); // assign the point to a cluster
 					clusters[id_nearest_center].addPoint(points[i]); // add the point to the nearest cluster
                     done = false; // set done to false to continue the loop as the clusters were not finalized in successive iterations
 				}
 			}
-
 			auto end_phase3 = chrono::high_resolution_clock::now();
 
 			// recalculating the center of each cluster
 			for(int i = 0; i < K; i++)
 			{
-				// cout << "Before recalculating central values for cluster " << i << " on iter " << iter << endl;
-				// clusters[i].getAllCentralValues();
-				for(int j = 0; j < total_values; j++)
-				{
-					int total_points_cluster = clusters[i].getTotalPoints();
-					double sum = 0.0;
-
-					// cout << "Total Points check: " << total_points_cluster << endl;
-					if(total_points_cluster > 0)
-					{
-						for(int p = 0; p < total_points_cluster; p++) {
-                            sum += clusters[i].getPoint(p).getValue(j);
-                        }
-						// cout << "Intermediate value " << j << " before reassigning: " << sum << endl;
-						clusters[i].setCentralValue(j, sum / total_points_cluster);
-					}
-				}
-				// cout << "After recalculating central values for cluster " << i << " on iter " << iter << endl;
-				// clusters[i].getAllCentralValues();
-				// cout << '\n';
+				clusters[i].setCentralValues();
 			}
 
 			auto end_phase4 = chrono::high_resolution_clock::now();

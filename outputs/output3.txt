@@ -1,0 +1,21 @@
+
+Iteration: 1
+Time to associate each point with the nearest cluster: 0
+Time to recalculate the center of each point: 0
+
+Break in iteration 2
+
+Cluster values: 1.25 1.5 
+
+TOTAL EXECUTION TIME = 19
+TIME PHASE 1 = 3
+TIME PHASE 2 = 15
+TIME PHASE ASSOCIATE = 0
+TIME PHASE RECALCULATE = 0
+Cluster values: 3.9 5.1 
+
+TOTAL EXECUTION TIME = 19
+TIME PHASE 1 = 3
+TIME PHASE 2 = 15
+TIME PHASE ASSOCIATE = 0
+TIME PHASE RECALCULATE = 0

@@ -1,5 +1,8 @@
 # File being made
-FILE := kmeans-serial
+FILE := new-wave-kmeans-parallel
+
+# kmeans-serial
+# new-wave-kmeans-parallel
 
 # Compiler
 CXX := g++
@@ -9,7 +12,7 @@ BITS := 64
 
 # Compiler flags
 TBB_PATH = /opt/tbb-2021.8.0 
-CXXFLAGS = -MMD -ggdb -std=gnu++11 -O3 -m$(BITS) -I/opt/tbb-2021.8.0/include
+CXXFLAGS = -MMD -g -std=gnu++2a -O3 -m$(BITS) -I/opt/tbb-2021.8.0/include
 LDFLAGS	 = -m$(BITS) -lpthread -lrt -L/opt/tbb-2021.8.0/lib64 -ltbb
 
 # Directories
