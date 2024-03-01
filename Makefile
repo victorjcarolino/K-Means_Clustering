@@ -1,5 +1,5 @@
 # File being made
-FILE := new-wave-kmeans-parallel
+FILE := better-kmeans-parallel-tls
 
 # kmeans-serial
 # new-wave-kmeans-parallel

@@ -1,176 +1,1067 @@
+----------------------
+Iteration: 1
+
+Intermediate Values Before Reassociation: Cluster: 0
+45.9531 42.5218 3.02536 10.1763 49.3988 67.7796 1.27415 0.6912 
+
+Cluster: 1
+132.977 39.2507 -0.190663 0.719355 2.00585 14.5368 9.95643 122.116 
+
+Central Values Before Reassociation: Cluster: 0
+45.9531 42.5218 3.02536 10.1763 49.3988 67.7796 1.27415 0.6912 
+
+Cluster: 1
+132.977 39.2507 -0.190663 0.719355 2.00585 14.5368 9.95643 122.116 
+
+Intermediate Values After Reassociation: Cluster: 0
+381201 184757 5560.97 26226.6 189544 229696 10010 39607.9 
+
+Cluster: 1
+1.60691e+06 648387 2991.72 5457.88 36228.4 241496 138607 1.83714e+06 
+
+Central Values After Reassociation: Cluster: 0
+93.2032 45.1729 1.35965 6.41236 46.3433 56.1604 2.44743 9.68408 
+
+Cluster: 1
+116.375 46.9573 0.216666 0.39527 2.62373 17.4896 10.0382 133.049 
+
 
 Iteration: 1
-Time to associate each point with the nearest cluster: 16356
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 567
+Time to recalculate the center of each point: 632
+
+----------------------
+Iteration: 2
+
+Intermediate Values Before Reassociation: Cluster: 0
+381201 184757 5560.97 26226.6 189544 229696 10010 39607.9 
+
+Cluster: 1
+1.60691e+06 648387 2991.72 5457.88 36228.4 241496 138607 1.83714e+06 
+
+Central Values Before Reassociation: Cluster: 0
+93.2032 45.1729 1.35965 6.41236 46.3433 56.1604 2.44743 9.68408 
+
+Cluster: 1
+116.375 46.9573 0.216666 0.39527 2.62373 17.4896 10.0382 133.049 
+
+Intermediate Values After Reassociation: Cluster: 0
+664774 297323 5904.09 26787.9 201062 291244 24725.2 139460 
+
+Cluster: 1
+1.32334e+06 535821 2648.6 4896.58 24710.2 179948 123892 1.73728e+06 
+
+Central Values After Reassociation: Cluster: 0
+103.194 46.1538 0.916499 4.15832 31.2112 45.2102 3.83813 21.6486 
+
+Cluster: 1
+115.515 46.7721 0.231198 0.427425 2.15697 15.7077 10.8146 151.648 
 
 
 Iteration: 2
-Time to associate each point with the nearest cluster: 4704
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 376
+Time to recalculate the center of each point: 872
+
+----------------------
+Iteration: 3
+
+Intermediate Values Before Reassociation: Cluster: 0
+664774 297323 5904.09 26787.9 201062 291244 24725.2 139460 
+
+Cluster: 1
+1.32334e+06 535821 2648.6 4896.58 24710.2 179948 123892 1.73728e+06 
+
+Central Values Before Reassociation: Cluster: 0
+103.194 46.1538 0.916499 4.15832 31.2112 45.2102 3.83813 21.6486 
+
+Cluster: 1
+115.515 46.7721 0.231198 0.427425 2.15697 15.7077 10.8146 151.648 
+
+Intermediate Values After Reassociation: Cluster: 0
+924270 402003 6355.16 27553.1 208205 336053 41954.4 291466 
+
+Cluster: 1
+1.06384e+06 431140 2197.53 4131.37 17567.2 135139 106663 1.58528e+06 
+
+Central Values After Reassociation: Cluster: 0
+106.79 46.4475 0.734277 3.18349 24.0561 38.8276 4.84741 33.6761 
+
+Cluster: 1
+115.097 46.6451 0.23775 0.446973 1.90059 14.6207 11.5398 171.511 
 
 
 Iteration: 3
-Time to associate each point with the nearest cluster: 4535
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 365
+Time to recalculate the center of each point: 787
+
+----------------------
+Iteration: 4
+
+Intermediate Values Before Reassociation: Cluster: 0
+924270 402003 6355.16 27553.1 208205 336053 41954.4 291466 
+
+Cluster: 1
+1.06384e+06 431140 2197.53 4131.37 17567.2 135139 106663 1.58528e+06 
+
+Central Values Before Reassociation: Cluster: 0
+106.79 46.4475 0.734277 3.18349 24.0561 38.8276 4.84741 33.6761 
+
+Cluster: 1
+115.097 46.6451 0.23775 0.446973 1.90059 14.6207 11.5398 171.511 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.13671e+06 487373 6762.64 28316.9 213031 368540 57925.5 454613 
+
+Cluster: 1
+851395 345771 1790.05 3367.59 12741.7 102652 90691.6 1.42213e+06 
+
+Central Values After Reassociation: Cluster: 0
+108.455 46.5006 0.645229 2.70173 20.3254 35.1627 5.52671 43.3749 
+
+Cluster: 1
+114.79 46.6186 0.241344 0.454036 1.7179 13.8401 12.2275 191.739 
 
 
 Iteration: 4
-Time to associate each point with the nearest cluster: 3691
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 350
+Time to recalculate the center of each point: 359
+
+----------------------
+Iteration: 5
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.13671e+06 487373 6762.64 28316.9 213031 368540 57925.5 454613 
+
+Cluster: 1
+851395 345771 1790.05 3367.59 12741.7 102652 90691.6 1.42213e+06 
+
+Central Values Before Reassociation: Cluster: 0
+108.455 46.5006 0.645229 2.70173 20.3254 35.1627 5.52671 43.3749 
+
+Cluster: 1
+114.79 46.6186 0.241344 0.454036 1.7179 13.8401 12.2275 191.739 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.29031e+06 549911 7083.32 28884 216162 390408 70527.2 596881 
+
+Cluster: 1
+697800 283232 1469.37 2800.47 9610.17 80784.3 78089.9 1.27986e+06 
+
+Central Values After Reassociation: Cluster: 0
+109.2 46.5395 0.599469 2.44448 18.294 33.0406 5.96879 50.5146 
+
+Cluster: 1
+114.732 46.569 0.241593 0.460453 1.5801 13.2825 12.8395 210.434 
 
 
 Iteration: 5
-Time to associate each point with the nearest cluster: 2953
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 353
+Time to recalculate the center of each point: 779
+
+----------------------
+Iteration: 6
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.29031e+06 549911 7083.32 28884 216162 390408 70527.2 596881 
+
+Cluster: 1
+697800 283232 1469.37 2800.47 9610.17 80784.3 78089.9 1.27986e+06 
+
+Central Values Before Reassociation: Cluster: 0
+109.2 46.5395 0.599469 2.44448 18.294 33.0406 5.96879 50.5146 
+
+Cluster: 1
+114.732 46.569 0.241593 0.460453 1.5801 13.2825 12.8395 210.434 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.40167e+06 594911 7305.24 29319.7 218220 405404 80211.2 714008 
+
+Cluster: 1
+586435 238232 1247.45 2364.78 7552.78 65787.5 68405.8 1.16274e+06 
+
+Central Values After Reassociation: Cluster: 0
+109.66 46.5429 0.571525 2.29382 17.0724 31.7168 6.27532 55.8604 
+
+Cluster: 1
+114.628 46.5661 0.243833 0.462233 1.47631 12.8592 13.371 227.274 
 
 
 Iteration: 6
-Time to associate each point with the nearest cluster: 2229
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 381
+Time to recalculate the center of each point: 667
+
+----------------------
+Iteration: 7
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.40167e+06 594911 7305.24 29319.7 218220 405404 80211.2 714008 
+
+Cluster: 1
+586435 238232 1247.45 2364.78 7552.78 65787.5 68405.8 1.16274e+06 
+
+Central Values Before Reassociation: Cluster: 0
+109.66 46.5429 0.571525 2.29382 17.0724 31.7168 6.27532 55.8604 
+
+Cluster: 1
+114.628 46.5661 0.243833 0.462233 1.47631 12.8592 13.371 227.274 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.48088e+06 626903 7462.94 29597.3 219577 415587 87391.7 805665 
+
+Cluster: 1
+507230 206240 1089.75 2087.18 6195.38 55604.7 61225.3 1.07108e+06 
+
+Central Values After Reassociation: Cluster: 0
+109.972 46.5545 0.554206 2.19793 16.306 30.862 6.4898 59.8296 
+
+Cluster: 1
+114.447 46.5343 0.245881 0.470935 1.39787 12.5462 13.8144 241.669 
 
 
 Iteration: 7
-Time to associate each point with the nearest cluster: 1700
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 333
+Time to recalculate the center of each point: 380
+
+----------------------
+Iteration: 8
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.48088e+06 626903 7462.94 29597.3 219577 415587 87391.7 805665 
+
+Cluster: 1
+507230 206240 1089.75 2087.18 6195.38 55604.7 61225.3 1.07108e+06 
+
+Central Values Before Reassociation: Cluster: 0
+109.972 46.5545 0.554206 2.19793 16.306 30.862 6.4898 59.8296 
+
+Cluster: 1
+114.447 46.5343 0.245881 0.470935 1.39787 12.5462 13.8144 241.669 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.53841e+06 650400 7589.93 29814.9 220520 422882 92878.7 878423 
+
+Cluster: 1
+449696 182744 962.756 1869.57 5252.07 48310.1 55738.3 998321 
+
+Central Values After Reassociation: Cluster: 0
+110.123 46.5569 0.543302 2.13421 15.7853 30.2707 6.64844 62.8792 
+
+Cluster: 1
+114.485 46.5233 0.245101 0.475959 1.33708 12.2989 14.19 254.155 
 
 
 Iteration: 8
-Time to associate each point with the nearest cluster: 1394
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 326
+Time to recalculate the center of each point: 552
+
+----------------------
+Iteration: 9
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.53841e+06 650400 7589.93 29814.9 220520 422882 92878.7 878423 
+
+Cluster: 1
+449696 182744 962.756 1869.57 5252.07 48310.1 55738.3 998321 
+
+Central Values Before Reassociation: Cluster: 0
+110.123 46.5569 0.543302 2.13421 15.7853 30.2707 6.64844 62.8792 
+
+Cluster: 1
+114.485 46.5233 0.245101 0.475959 1.33708 12.2989 14.19 254.155 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.57869e+06 666406 7677.26 29998.5 221149 427799 96774.2 931822 
+
+Cluster: 1
+409419 166738 875.427 1685.98 4623.11 43393.2 51842.9 944921 
+
+Central Values After Reassociation: Cluster: 0
+110.251 46.54 0.536159 2.09501 15.4445 29.8763 6.75845 65.0759 
+
+Cluster: 1
+114.395 46.5878 0.244601 0.471074 1.29173 12.1244 14.4853 264.018 
 
 
 Iteration: 9
-Time to associate each point with the nearest cluster: 1100
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 307
+Time to recalculate the center of each point: 461
+
+----------------------
+Iteration: 10
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.57869e+06 666406 7677.26 29998.5 221149 427799 96774.2 931822 
+
+Cluster: 1
+409419 166738 875.427 1685.98 4623.11 43393.2 51842.9 944921 
+
+Central Values Before Reassociation: Cluster: 0
+110.251 46.54 0.536159 2.09501 15.4445 29.8763 6.75845 65.0759 
+
+Cluster: 1
+114.395 46.5878 0.244601 0.471074 1.29173 12.1244 14.4853 264.018 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.60467e+06 677067 7739.22 30103.1 221546 430991 99399.8 968555 
+
+Cluster: 1
+383436 156076 813.47 1581.38 4226.56 40200.5 49217.2 908188 
+
+Central Values After Reassociation: Cluster: 0
+110.302 46.5402 0.531978 2.06922 15.2286 29.6255 6.83254 66.5765 
+
+Cluster: 1
+114.458 46.5899 0.242827 0.472053 1.26166 12.0002 14.6917 271.101 
 
 
 Iteration: 10
-Time to associate each point with the nearest cluster: 918
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 321
+Time to recalculate the center of each point: 323
+
+----------------------
+Iteration: 11
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.60467e+06 677067 7739.22 30103.1 221546 430991 99399.8 968555 
+
+Cluster: 1
+383436 156076 813.47 1581.38 4226.56 40200.5 49217.2 908188 
+
+Central Values Before Reassociation: Cluster: 0
+110.302 46.5402 0.531978 2.06922 15.2286 29.6255 6.83254 66.5765 
+
+Cluster: 1
+114.458 46.5899 0.242827 0.472053 1.26166 12.0002 14.6917 271.101 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.62496e+06 685177 7772.38 30171.2 221839 433380 101412 997161 
+
+Cluster: 1
+363150 147967 780.312 1513.22 3933.16 37811.8 47205.3 879582 
+
+Central Values After Reassociation: Cluster: 0
+110.384 46.5442 0.527979 2.04954 15.0696 29.4396 6.88892 67.7373 
+
+Cluster: 1
+114.306 46.5743 0.245613 0.476305 1.23801 11.9017 14.8584 276.859 
 
 
 Iteration: 11
-Time to associate each point with the nearest cluster: 814
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 334
+Time to recalculate the center of each point: 314
+
+----------------------
+Iteration: 12
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.62496e+06 685177 7772.38 30171.2 221839 433380 101412 997161 
+
+Cluster: 1
+363150 147967 780.312 1513.22 3933.16 37811.8 47205.3 879582 
+
+Central Values Before Reassociation: Cluster: 0
+110.384 46.5442 0.527979 2.04954 15.0696 29.4396 6.88892 67.7373 
+
+Cluster: 1
+114.306 46.5743 0.245613 0.476305 1.23801 11.9017 14.8584 276.859 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.64108e+06 691802 7807.43 30232 222070 435318 103078 1.02105e+06 
+
+Cluster: 1
+347034 141342 745.255 1452.46 3702.27 35874.4 45538.7 855689 
+
+Central Values After Reassociation: Cluster: 0
+110.421 46.5484 0.525329 2.03418 14.9422 29.2906 6.9357 68.7024 
+
+Cluster: 1
+114.306 46.5553 0.245473 0.478412 1.21946 11.8163 14.9996 281.847 
 
 
 Iteration: 12
-Time to associate each point with the nearest cluster: 766
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 360
+Time to recalculate the center of each point: 471
+
+----------------------
+Iteration: 13
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.64108e+06 691802 7807.43 30232 222070 435318 103078 1.02105e+06 
+
+Cluster: 1
+347034 141342 745.255 1452.46 3702.27 35874.4 45538.7 855689 
+
+Central Values Before Reassociation: Cluster: 0
+110.421 46.5484 0.525329 2.03418 14.9422 29.2906 6.9357 68.7024 
+
+Cluster: 1
+114.306 46.5553 0.245473 0.478412 1.21946 11.8163 14.9996 281.847 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.65311e+06 696755 7833.68 30274.2 222247 436723 104312 1.03918e+06 
+
+Cluster: 1
+334997 136388 719.009 1410.22 3525.03 34469.2 44305.2 837565 
+
+Central Values After Reassociation: Cluster: 0
+110.45 46.5528 0.523397 2.02273 14.8492 29.179 6.96946 69.4313 
+
+Cluster: 1
+114.294 46.5329 0.245312 0.48114 1.20267 11.7602 15.1161 285.761 
 
 
 Iteration: 13
-Time to associate each point with the nearest cluster: 675
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 315
+Time to recalculate the center of each point: 378
+
+----------------------
+Iteration: 14
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.65311e+06 696755 7833.68 30274.2 222247 436723 104312 1.03918e+06 
+
+Cluster: 1
+334997 136388 719.009 1410.22 3525.03 34469.2 44305.2 837565 
+
+Central Values Before Reassociation: Cluster: 0
+110.45 46.5528 0.523397 2.02273 14.8492 29.179 6.96946 69.4313 
+
+Cluster: 1
+114.294 46.5329 0.245312 0.48114 1.20267 11.7602 15.1161 285.761 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.66225e+06 700471 7855.48 30319.7 222379 437805 105278 1.05338e+06 
+
+Cluster: 1
+325856 132672 697.21 1364.8 3393.79 33386.6 43339.1 823360 
+
+Central Values After Reassociation: Cluster: 0
+110.463 46.5491 0.522028 2.01486 14.778 29.0939 6.99614 70.0015 
+
+Cluster: 1
+114.335 46.5517 0.244635 0.478878 1.1908 11.7146 15.2067 288.898 
 
 
 Iteration: 14
-Time to associate each point with the nearest cluster: 641
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 319
+Time to recalculate the center of each point: 547
+
+----------------------
+Iteration: 15
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.66225e+06 700471 7855.48 30319.7 222379 437805 105278 1.05338e+06 
+
+Cluster: 1
+325856 132672 697.21 1364.8 3393.79 33386.6 43339.1 823360 
+
+Central Values Before Reassociation: Cluster: 0
+110.463 46.5491 0.522028 2.01486 14.778 29.0939 6.99614 70.0015 
+
+Cluster: 1
+114.335 46.5517 0.244635 0.478878 1.1908 11.7146 15.2067 288.898 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.66903e+06 703242 7868.08 30343.3 222477 438598 105984 1.06385e+06 
+
+Cluster: 1
+319079 129901 684.613 1341.2 3295.8 32593.7 42632.7 812893 
+
+Central Values After Reassociation: Cluster: 0
+110.481 46.5507 0.520823 2.00856 14.7267 29.0328 7.01558 70.421 
+
+Cluster: 1
+114.324 46.543 0.245293 0.480545 1.18087 11.6781 15.2751 291.255 
 
 
 Iteration: 15
-Time to associate each point with the nearest cluster: 590
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 339
+Time to recalculate the center of each point: 405
+
+----------------------
+Iteration: 16
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.66903e+06 703242 7868.08 30343.3 222477 438598 105984 1.06385e+06 
+
+Cluster: 1
+319079 129901 684.613 1341.2 3295.8 32593.7 42632.7 812893 
+
+Central Values Before Reassociation: Cluster: 0
+110.481 46.5507 0.520823 2.00856 14.7267 29.0328 7.01558 70.421 
+
+Cluster: 1
+114.324 46.543 0.245293 0.480545 1.18087 11.6781 15.2751 291.255 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.67429e+06 705390 7878.8 30364.5 222551 439210 106539 1.07209e+06 
+
+Cluster: 1
+313821 127754 673.892 1319.95 3221.69 31981.6 42077.6 804650 
+
+Central Values After Reassociation: Cluster: 0
+110.492 46.5512 0.51995 2.00386 14.6869 28.985 7.03091 70.7512 
+
+Cluster: 1
+114.325 46.5405 0.245498 0.480855 1.17366 11.6508 15.3288 293.133 
 
 
 Iteration: 16
-Time to associate each point with the nearest cluster: 561
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 346
+Time to recalculate the center of each point: 515
+
+----------------------
+Iteration: 17
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.67429e+06 705390 7878.8 30364.5 222551 439210 106539 1.07209e+06 
+
+Cluster: 1
+313821 127754 673.892 1319.95 3221.69 31981.6 42077.6 804650 
+
+Central Values Before Reassociation: Cluster: 0
+110.492 46.5512 0.51995 2.00386 14.6869 28.985 7.03091 70.7512 
+
+Cluster: 1
+114.325 46.5405 0.245498 0.480855 1.17366 11.6508 15.3288 293.133 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.67801e+06 707005 7886.29 30373.1 222605 439643 106935 1.07805e+06 
+
+Cluster: 1
+310095 126139 666.402 1311.36 3167.98 31549.3 41682.1 798698 
+
+Central Values After Reassociation: Cluster: 0
+110.497 46.5563 0.519313 2.00007 14.6585 28.9505 7.04168 70.9894 
+
+Cluster: 1
+114.342 46.5114 0.245724 0.483538 1.16813 11.6332 15.3695 294.505 
 
 
 Iteration: 17
-Time to associate each point with the nearest cluster: 520
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 353
+Time to recalculate the center of each point: 527
+
+----------------------
+Iteration: 18
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.67801e+06 707005 7886.29 30373.1 222605 439643 106935 1.07805e+06 
+
+Cluster: 1
+310095 126139 666.402 1311.36 3167.98 31549.3 41682.1 798698 
+
+Central Values Before Reassociation: Cluster: 0
+110.497 46.5563 0.519313 2.00007 14.6585 28.9505 7.04168 70.9894 
+
+Cluster: 1
+114.342 46.5114 0.245724 0.483538 1.16813 11.6332 15.3695 294.505 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.68044e+06 708002 7892.73 30382.2 222638 439920 107190 1.08185e+06 
+
+Cluster: 1
+307673 125142 659.958 1302.22 3134.57 31271.8 41427 794890 
+
+Central Values After Reassociation: Cluster: 0
+110.504 46.5576 0.51902 1.99791 14.6405 28.9288 7.04873 71.1418 
+
+Cluster: 1
+114.334 46.5039 0.245246 0.483918 1.16483 11.6209 15.3947 295.388 
 
 
 Iteration: 18
-Time to associate each point with the nearest cluster: 425
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 338
+Time to recalculate the center of each point: 433
+
+----------------------
+Iteration: 19
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.68044e+06 708002 7892.73 30382.2 222638 439920 107190 1.08185e+06 
+
+Cluster: 1
+307673 125142 659.958 1302.22 3134.57 31271.8 41427 794890 
+
+Central Values Before Reassociation: Cluster: 0
+110.504 46.5576 0.51902 1.99791 14.6405 28.9288 7.04873 71.1418 
+
+Cluster: 1
+114.334 46.5039 0.245246 0.483918 1.16483 11.6209 15.3947 295.388 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.68192e+06 708578 7896.79 30392.7 222658 440092 107349 1.08422e+06 
+
+Cluster: 1
+306187 124566 655.897 1291.74 3114.6 31099.6 41268.4 792524 
+
+Central Values After Reassociation: Cluster: 0
+110.507 46.5557 0.518843 1.99689 14.6293 28.9154 7.05313 71.2365 
+
+Cluster: 1
+114.334 46.5145 0.24492 0.482354 1.16303 11.613 15.4102 295.939 
 
 
 Iteration: 19
-Time to associate each point with the nearest cluster: 427
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 302
+Time to recalculate the center of each point: 574
+
+----------------------
+Iteration: 20
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.68192e+06 708578 7896.79 30392.7 222658 440092 107349 1.08422e+06 
+
+Cluster: 1
+306187 124566 655.897 1291.74 3114.6 31099.6 41268.4 792524 
+
+Central Values Before Reassociation: Cluster: 0
+110.507 46.5557 0.518843 1.99689 14.6293 28.9154 7.05313 71.2365 
+
+Cluster: 1
+114.334 46.5145 0.24492 0.482354 1.16303 11.613 15.4102 295.939 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.68323e+06 709103 7899.6 30401.5 222677 440255 107496 1.08641e+06 
+
+Cluster: 1
+304880 124041 653.09 1282.92 3095.24 30936.5 41121.5 790333 
+
+Central Values After Reassociation: Cluster: 0
+110.506 46.5535 0.518619 1.9959 14.619 28.9033 7.05722 71.3242 
+
+Cluster: 1
+114.359 46.527 0.24497 0.481217 1.16101 11.6041 15.4244 296.449 
 
 
 Iteration: 20
-Time to associate each point with the nearest cluster: 435
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 301
+Time to recalculate the center of each point: 262
+
+----------------------
+Iteration: 21
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.68323e+06 709103 7899.6 30401.5 222677 440255 107496 1.08641e+06 
+
+Cluster: 1
+304880 124041 653.09 1282.92 3095.24 30936.5 41121.5 790333 
+
+Central Values Before Reassociation: Cluster: 0
+110.506 46.5535 0.518619 1.9959 14.619 28.9033 7.05722 71.3242 
+
+Cluster: 1
+114.359 46.527 0.24497 0.481217 1.16101 11.6041 15.4244 296.449 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.68458e+06 709647 7902.54 30407.4 222696 440414 107642 1.0886e+06 
+
+Cluster: 1
+303527 123496 650.153 1277.01 3076.3 30777.5 40974.7 788140 
+
+Central Values After Reassociation: Cluster: 0
+110.508 46.5526 0.518403 1.99472 14.6088 28.891 7.0613 71.4119 
+
+Cluster: 1
+114.366 46.5322 0.244971 0.481164 1.15912 11.5966 15.4388 296.963 
 
 
 Iteration: 21
-Time to associate each point with the nearest cluster: 486
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 336
+Time to recalculate the center of each point: 366
+
+----------------------
+Iteration: 22
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.68458e+06 709647 7902.54 30407.4 222696 440414 107642 1.0886e+06 
+
+Cluster: 1
+303527 123496 650.153 1277.01 3076.3 30777.5 40974.7 788140 
+
+Central Values Before Reassociation: Cluster: 0
+110.508 46.5526 0.518403 1.99472 14.6088 28.891 7.0613 71.4119 
+
+Cluster: 1
+114.366 46.5322 0.244971 0.481164 1.15912 11.5966 15.4388 296.963 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.6859e+06 710173 7903.61 30408.8 222713 440565 107780 1.09062e+06 
+
+Cluster: 1
+302214 122970 649.074 1275.66 3059.84 30626.9 40837.4 786127 
+
+Central Values After Reassociation: Cluster: 0
+110.514 46.5535 0.5181 1.99337 14.5993 28.88 7.0652 71.4924 
+
+Cluster: 1
+114.345 46.5269 0.245582 0.482655 1.15771 11.5879 15.4512 297.437 
 
 
 Iteration: 22
-Time to associate each point with the nearest cluster: 478
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 323
+Time to recalculate the center of each point: 528
+
+----------------------
+Iteration: 23
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.6859e+06 710173 7903.61 30408.8 222713 440565 107780 1.09062e+06 
+
+Cluster: 1
+302214 122970 649.074 1275.66 3059.84 30626.9 40837.4 786127 
+
+Central Values Before Reassociation: Cluster: 0
+110.514 46.5535 0.5181 1.99337 14.5993 28.88 7.0652 71.4924 
+
+Cluster: 1
+114.345 46.5269 0.245582 0.482655 1.15771 11.5879 15.4512 297.437 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.68694e+06 710575 7905.83 30413.5 222726 440682 107889 1.09227e+06 
+
+Cluster: 1
+301166 122569 646.864 1270.97 3046.35 30510.2 40728.2 784478 
+
+Central Values After Reassociation: Cluster: 0
+110.518 46.5523 0.517939 1.9925 14.5916 28.8707 7.06819 71.5583 
+
+Cluster: 1
+114.338 46.5332 0.245582 0.482523 1.15655 11.5832 15.4625 297.828 
 
 
 Iteration: 23
-Time to associate each point with the nearest cluster: 456
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 301
+Time to recalculate the center of each point: 348
+
+----------------------
+Iteration: 24
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.68694e+06 710575 7905.83 30413.5 222726 440682 107889 1.09227e+06 
+
+Cluster: 1
+301166 122569 646.864 1270.97 3046.35 30510.2 40728.2 784478 
+
+Central Values Before Reassociation: Cluster: 0
+110.518 46.5523 0.517939 1.9925 14.5916 28.8707 7.06819 71.5583 
+
+Cluster: 1
+114.338 46.5332 0.245582 0.482523 1.15655 11.5832 15.4625 297.828 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.68767e+06 710865 7907 30414.3 222735 440761 107963 1.09337e+06 
+
+Cluster: 1
+300436 122279 645.689 1270.12 3037.42 30431.3 40654.3 783377 
+
+Central Values After Reassociation: Cluster: 0
+110.522 46.553 0.517813 1.99177 14.5865 28.8645 7.07025 71.6022 
+
+Cluster: 1
+114.321 46.5291 0.245696 0.483304 1.15579 11.5796 15.4697 298.089 
 
 
 Iteration: 24
-Time to associate each point with the nearest cluster: 384
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 342
+Time to recalculate the center of each point: 281
+
+----------------------
+Iteration: 25
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.68767e+06 710865 7907 30414.3 222735 440761 107963 1.09337e+06 
+
+Cluster: 1
+300436 122279 645.689 1270.12 3037.42 30431.3 40654.3 783377 
+
+Central Values Before Reassociation: Cluster: 0
+110.522 46.553 0.517813 1.99177 14.5865 28.8645 7.07025 71.6022 
+
+Cluster: 1
+114.321 46.5291 0.245696 0.483304 1.15579 11.5796 15.4697 298.089 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.68832e+06 711156 7909.42 30418.4 222745 440839 108035 1.09447e+06 
+
+Cluster: 1
+299785 121988 643.271 1266.09 3027.26 30352.6 40581.9 782274 
+
+Central Values After Reassociation: Cluster: 0
+110.521 46.5538 0.517768 1.99125 14.5814 28.8583 7.07222 71.6463 
+
+Cluster: 1
+114.335 46.5247 0.245336 0.482871 1.15456 11.5761 15.4774 298.35 
 
 
 Iteration: 25
-Time to associate each point with the nearest cluster: 446
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 319
+Time to recalculate the center of each point: 575
+
+----------------------
+Iteration: 26
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.68832e+06 711156 7909.42 30418.4 222745 440839 108035 1.09447e+06 
+
+Cluster: 1
+299785 121988 643.271 1266.09 3027.26 30352.6 40581.9 782274 
+
+Central Values Before Reassociation: Cluster: 0
+110.521 46.5538 0.517768 1.99125 14.5814 28.8583 7.07222 71.6463 
+
+Cluster: 1
+114.335 46.5247 0.245336 0.482871 1.15456 11.5761 15.4774 298.35 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.68918e+06 711511 7911.75 30423.8 222758 440946 108133 1.09594e+06 
+
+Cluster: 1
+298925 121632 640.942 1260.62 3014.48 30246.1 40483.8 780801 
+
+Central Values After Reassociation: Cluster: 0
+110.52 46.5527 0.517649 1.99057 14.5746 28.8502 7.07493 71.7052 
+
+Cluster: 1
+114.355 46.5311 0.245196 0.482258 1.1532 11.5708 15.4873 298.7 
 
 
 Iteration: 26
-Time to associate each point with the nearest cluster: 449
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 322
+Time to recalculate the center of each point: 212
+
+----------------------
+Iteration: 27
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.68918e+06 711511 7911.75 30423.8 222758 440946 108133 1.09594e+06 
+
+Cluster: 1
+298925 121632 640.942 1260.62 3014.48 30246.1 40483.8 780801 
+
+Central Values Before Reassociation: Cluster: 0
+110.52 46.5527 0.517649 1.99057 14.5746 28.8502 7.07493 71.7052 
+
+Cluster: 1
+114.355 46.5311 0.245196 0.482258 1.1532 11.5708 15.4873 298.7 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.68966e+06 711690 7912.29 30424.7 222764 440998 108182 1.09668e+06 
+
+Cluster: 1
+298452 121454 640.4 1259.71 3008.49 30194.1 40434.8 780065 
+
+Central Values After Reassociation: Cluster: 0
+110.522 46.5522 0.517549 1.99011 14.5712 28.846 7.07628 71.7346 
+
+Cluster: 1
+114.35 46.534 0.245364 0.482646 1.15268 11.5686 15.4923 298.876 
 
 
 Iteration: 27
-Time to associate each point with the nearest cluster: 390
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 320
+Time to recalculate the center of each point: 313
+
+----------------------
+Iteration: 28
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.68966e+06 711690 7912.29 30424.7 222764 440998 108182 1.09668e+06 
+
+Cluster: 1
+298452 121454 640.4 1259.71 3008.49 30194.1 40434.8 780065 
+
+Central Values Before Reassociation: Cluster: 0
+110.522 46.5522 0.517549 1.99011 14.5712 28.846 7.07628 71.7346 
+
+Cluster: 1
+114.35 46.534 0.245364 0.482646 1.15268 11.5686 15.4923 298.876 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.69031e+06 711934 7912.68 30425.5 222772 441062 108242 1.0976e+06 
+
+Cluster: 1
+297802 121209 640.014 1259 3000.41 30130 40374.8 779145 
+
+Central Values After Reassociation: Cluster: 0
+110.528 46.5529 0.517405 1.9895 14.5669 28.8408 7.07789 71.7713 
+
+Cluster: 1
+114.319 46.5295 0.245687 0.483302 1.15179 11.5662 15.499 299.096 
 
 
 Iteration: 28
-Time to associate each point with the nearest cluster: 389
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 312
+Time to recalculate the center of each point: 509
+
+----------------------
+Iteration: 29
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.69031e+06 711934 7912.68 30425.5 222772 441062 108242 1.0976e+06 
+
+Cluster: 1
+297802 121209 640.014 1259 3000.41 30130 40374.8 779145 
+
+Central Values Before Reassociation: Cluster: 0
+110.528 46.5529 0.517405 1.9895 14.5669 28.8408 7.07789 71.7713 
+
+Cluster: 1
+114.319 46.5295 0.245687 0.483302 1.15179 11.5662 15.499 299.096 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.69056e+06 712028 7913.22 30426 222775 441088 108267 1.09797e+06 
+
+Cluster: 1
+297552 121116 639.474 1258.46 2997.52 30103.5 40349.9 778777 
+
+Central Values After Reassociation: Cluster: 0
+110.53 46.553 0.517373 1.98928 14.5652 28.8387 7.0786 71.786 
+
+Cluster: 1
+114.311 46.5293 0.245668 0.483463 1.15156 11.5649 15.5013 299.184 
 
 
 Iteration: 29
-Time to associate each point with the nearest cluster: 360
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 338
+Time to recalculate the center of each point: 457
+
+----------------------
+Iteration: 30
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.69056e+06 712028 7913.22 30426 222775 441088 108267 1.09797e+06 
+
+Cluster: 1
+297552 121116 639.474 1258.46 2997.52 30103.5 40349.9 778777 
+
+Central Values Before Reassociation: Cluster: 0
+110.53 46.553 0.517373 1.98928 14.5652 28.8387 7.0786 71.786 
+
+Cluster: 1
+114.311 46.5293 0.245668 0.483463 1.15156 11.5649 15.5013 299.184 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.69079e+06 712128 7913.46 30425.7 222779 441113 108290 1.09834e+06 
+
+Cluster: 1
+297324 121016 639.227 1258.78 2993.8 30079.3 40327.1 778408 
+
+Central Values After Reassociation: Cluster: 0
+110.531 46.5534 0.517321 1.989 14.5636 28.8365 7.07916 71.8007 
+
+Cluster: 1
+114.311 46.5267 0.245762 0.483962 1.15102 11.5645 15.5045 299.273 
 
 
 Iteration: 30
-Time to associate each point with the nearest cluster: 360
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 300
+Time to recalculate the center of each point: 473
+
+----------------------
+Iteration: 31
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.69079e+06 712128 7913.46 30425.7 222779 441113 108290 1.09834e+06 
+
+Cluster: 1
+297324 121016 639.227 1258.78 2993.8 30079.3 40327.1 778408 
+
+Central Values Before Reassociation: Cluster: 0
+110.531 46.5534 0.517321 1.989 14.5636 28.8365 7.07916 71.8007 
+
+Cluster: 1
+114.311 46.5267 0.245762 0.483962 1.15102 11.5645 15.5045 299.273 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.69114e+06 712281 7913.91 30425.1 222784 441150 108325 1.09889e+06 
+
+Cluster: 1
+296974 120862 638.776 1259.32 2988.59 30042.2 40291.9 777855 
+
+Central Values After Reassociation: Cluster: 0
+110.532 46.5543 0.517249 1.98857 14.561 28.8333 7.08007 71.8228 
+
+Cluster: 1
+114.309 46.5212 0.245872 0.484728 1.15034 11.5636 15.5088 299.405 
 
 
 Iteration: 31
-Time to associate each point with the nearest cluster: 382
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 331
+Time to recalculate the center of each point: 347
+
+----------------------
+Iteration: 32
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.69114e+06 712281 7913.91 30425.1 222784 441150 108325 1.09889e+06 
+
+Cluster: 1
+296974 120862 638.776 1259.32 2988.59 30042.2 40291.9 777855 
+
+Central Values Before Reassociation: Cluster: 0
+110.532 46.5543 0.517249 1.98857 14.561 28.8333 7.08007 71.8228 
+
+Cluster: 1
+114.309 46.5212 0.245872 0.484728 1.15034 11.5636 15.5088 299.405 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.69133e+06 712360 7915.36 30431.8 222787 441177 108350 1.09926e+06 
+
+Cluster: 1
+296781 120783 637.332 1252.64 2985.58 30014.6 40267 777485 
+
+Central Values After Reassociation: Cluster: 0
+110.53 46.5534 0.517276 1.98875 14.5593 28.8314 7.08077 71.8376 
+
+Cluster: 1
+114.322 46.5266 0.245505 0.482529 1.15007 11.5619 15.5112 299.493 
 
 
 Iteration: 32
-Time to associate each point with the nearest cluster: 388
-Time to recalculate the center of each point: 0
+Time to associate each point with the nearest cluster: 321
+Time to recalculate the center of each point: 417
+
+----------------------
+Iteration: 33
+
+Intermediate Values Before Reassociation: Cluster: 0
+1.69133e+06 712360 7915.36 30431.8 222787 441177 108350 1.09926e+06 
+
+Cluster: 1
+296781 120783 637.332 1252.64 2985.58 30014.6 40267 777485 
+
+Central Values Before Reassociation: Cluster: 0
+110.53 46.5534 0.517276 1.98875 14.5593 28.8314 7.08077 71.8376 
+
+Cluster: 1
+114.322 46.5266 0.245505 0.482529 1.15007 11.5619 15.5112 299.493 
+
+Intermediate Values After Reassociation: Cluster: 0
+1.69133e+06 712360 7915.36 30431.8 222787 441177 108350 1.09926e+06 
+
+Cluster: 1
+296781 120783 637.332 1252.64 2985.58 30014.6 40267 777485 
+
+Central Values After Reassociation: Cluster: 0
+110.53 46.5534 0.517276 1.98875 14.5593 28.8314 7.08077 71.8376 
+
+Cluster: 1
+114.322 46.5266 0.245505 0.482529 1.15007 11.5619 15.5112 299.493 
 
 Break in iteration 33
 
 Cluster values: 110.53 46.5534 0.517276 1.98875 14.5593 28.8314 7.08077 71.8376 
 
-TOTAL EXECUTION TIME = 52996
-TIME PHASE 1 = 6
-TIME PHASE 2 = 52990
-TIME PHASE ASSOCIATE = 50402
-TIME PHASE RECALCULATE = 0
+TOTAL EXECUTION TIME = 26680
+TIME PHASE 1 = 3
+TIME PHASE 2 = 26676
+TIME PHASE ASSOCIATE = 10851
+TIME PHASE RECALCULATE = 15064
 Cluster values: 114.322 46.5266 0.245505 0.482529 1.15007 11.5619 15.5112 299.493 
 
-TOTAL EXECUTION TIME = 52996
-TIME PHASE 1 = 6
-TIME PHASE 2 = 52990
-TIME PHASE ASSOCIATE = 50402
-TIME PHASE RECALCULATE = 0
+TOTAL EXECUTION TIME = 26680
+TIME PHASE 1 = 3
+TIME PHASE 2 = 26676
+TIME PHASE ASSOCIATE = 10851
+TIME PHASE RECALCULATE = 15064
