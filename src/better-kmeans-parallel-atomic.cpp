@@ -12,7 +12,7 @@
 #include <numeric>
 #include <tbb/tbb.h>
 #include <tbb/enumerable_thread_specific.h>
-#include <atomic>
+#include <tbb/atomic.h>
 
 
 using namespace std;
@@ -80,7 +80,7 @@ private:
 	int id_cluster;
 	vector<double> central_values;
 	vector<double> intermediate_central_values;
-	int total_points = 0;
+	tbb::atomic<int> total_points = 0;
 	int total_values;
 	
 

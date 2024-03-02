@@ -256,20 +256,20 @@ public:
 		while(true)
 		{
 			bool done = true;
-			cout << "----------------------" << endl;
+			//cout << "----------------------" << endl;
 			// associates each point to the nearest center
 			auto end_phase2 = chrono::high_resolution_clock::now();
-			cout << "Iteration: " << iter << "\n\n";
-			cout << "Intermediate Values Before Reassociation: ";
-			for(int i = 0; i < K; i++) {
-				cout << "Cluster: " << i << endl;
-				clusters[i].getAllIntermediateValues();
-			}
-			cout << "Central Values Before Reassociation: ";
-			for(int i = 0; i < K; i++) {
-				cout << "Cluster: " << i << endl;
-				clusters[i].getAllCentralValues();
-			}
+			//cout << "Iteration: " << iter << "\n\n";
+			//cout << "Intermediate Values Before Reassociation: ";
+			// for(int i = 0; i < K; i++) {
+			// 	cout << "Cluster: " << i << endl;
+			// 	clusters[i].getAllIntermediateValues();
+			// }
+			// cout << "Central Values Before Reassociation: ";
+			// for(int i = 0; i < K; i++) {
+			// 	cout << "Cluster: " << i << endl;
+			// 	clusters[i].getAllCentralValues();
+			// }
 
 			for(int i = 0; i < total_points; i++)
 			{
@@ -291,11 +291,11 @@ public:
 			}
 			auto end_phase3 = chrono::high_resolution_clock::now();
 
-			cout << "Intermediate Values After Reassociation: ";
-			for(int i = 0; i < K; i++) {
-				cout << "Cluster: " << i << endl;
-				clusters[i].getAllIntermediateValues();
-			}
+			//cout << "Intermediate Values After Reassociation: ";
+			// for(int i = 0; i < K; i++) {
+			// 	cout << "Cluster: " << i << endl;
+			// 	clusters[i].getAllIntermediateValues();
+			// }
 
 			// recalculating the center of each cluster
 			for(int i = 0; i < K; i++)
@@ -303,11 +303,11 @@ public:
 				clusters[i].setCentralValues();
 			}
 
-			cout << "Central Values After Reassociation: ";
-			for(int i = 0; i < K; i++) {
-				cout << "Cluster: " << i << endl;
-				clusters[i].getAllCentralValues();
-			}
+			// cout << "Central Values After Reassociation: ";
+			// for(int i = 0; i < K; i++) {
+			// 	cout << "Cluster: " << i << endl;
+			// 	clusters[i].getAllCentralValues();
+			// }
 
 			auto end_phase4 = chrono::high_resolution_clock::now();
 
@@ -317,13 +317,13 @@ public:
 				break;
 			}
 			
-			cout << "\n";
-			cout << "Iteration: " << iter << endl;
-			cout << "Time to associate each point with the nearest cluster: " << std::chrono::duration_cast<std::chrono::microseconds>(end_phase3-end_phase2).count()<<"\n";
-			times1.push_back(std::chrono::duration_cast<std::chrono::microseconds>(end_phase3-end_phase2));
-			cout << "Time to recalculate the center of each point: " << std::chrono::duration_cast<std::chrono::microseconds>(end_phase4-end_phase3).count()<<"\n";
-			times2.push_back(std::chrono::duration_cast<std::chrono::microseconds>(end_phase4-end_phase3));
-			cout << "\n";
+			// cout << "\n";
+			// cout << "Iteration: " << iter << endl;
+			// cout << "Time to associate each point with the nearest cluster: " << std::chrono::duration_cast<std::chrono::microseconds>(end_phase3-end_phase2).count()<<"\n";
+			// times1.push_back(std::chrono::duration_cast<std::chrono::microseconds>(end_phase3-end_phase2));
+			// cout << "Time to recalculate the center of each point: " << std::chrono::duration_cast<std::chrono::microseconds>(end_phase4-end_phase3).count()<<"\n";
+			// times2.push_back(std::chrono::duration_cast<std::chrono::microseconds>(end_phase4-end_phase3));
+			// cout << "\n";
 
 			iter++;
 		}

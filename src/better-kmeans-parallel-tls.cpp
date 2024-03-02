@@ -17,6 +17,9 @@
 
 using namespace std;
 
+const int constK = 3;
+const int const_total_values = 4;
+
 class Point
 {
 private:
@@ -74,6 +77,88 @@ public:
 	}
 };
 
+class View {
+  private:
+	struct view {
+		// keep track of total points;
+		vector<int> total_points;
+		// keep track of count
+		int change;
+		// keep track of intermediate_central_values;
+		vector<vector<double>> intermediate_central_values; // 1 vector level  for every cluster a thread may encounter and another vector level for multiple values of a point 
+	};
+	view view;
+  public:
+	View() {
+		this->view.total_points = vector<int>(constK);
+		for (int i = 0; i < constK; i++) {
+			this->view.total_points[i] = 0;
+		}
+		this->view.change = 0;
+		this->view.intermediate_central_values = vector<vector<double>>(constK);
+		for (int i = 0; i < constK; i++) {
+			this->view.intermediate_central_values[i] = vector<double>(const_total_values, 0);
+		}
+		
+	}
+
+	void getAllIntermediateValues() {
+		//cout << "TLS Intermediate Values Begin: " << endl;
+		for(int i = 0; i < constK; i++) {
+			// cout << "Cluster: " << i << endl;
+			// cout << "Intermediate Values: ";
+			for(int j = 0; j < const_total_values; j++) {
+				cout << this->view.intermediate_central_values[i][j] << " ";
+			}
+			// cout << "\n";
+		}
+		// cout << "TLS Intermediate Values End" << endl;
+	}
+
+	vector<double> getIntermediateCentralValues(int index) {
+		return this->view.intermediate_central_values[index];
+	}
+
+	int getTotalPoints(int index) {
+		return this->view.total_points[index];
+	}
+
+	void addPoint(Point point, int clusterId) {
+		this->view.total_points[clusterId]++;
+		//cout << "Const Total Values: " << const_total_values << endl;
+		for (int i = 0; i < const_total_values; i++) {
+			//cout << "Iteration: " << i << endl;
+			this->view.intermediate_central_values[clusterId][i] += point.getValue(i);
+		}
+		this->view.change++;
+	}
+
+	void removePoint(Point point, int clusterId) {
+		this->view.total_points[clusterId]--;
+		for (int i = 0; i < const_total_values; i++) {
+			this->view.intermediate_central_values[clusterId][i] -= point.getValue(i);
+		}
+		this->view.change++;
+	}
+
+	int getChange() {
+		return this->view.change;
+	}
+
+	void reset() {
+		//cout << "Here4" << endl;
+		for (int i = 0; i < constK; i++) {
+			this->view.total_points[i] = 0;
+			//cout << "Here2" << endl;
+			for (int j = 0; j < const_total_values; j++) {
+				this->view.intermediate_central_values[i][j] = 0;
+			}
+		}
+		this->view.change = 0;
+	}
+
+};
+
 class Cluster
 {
 private:
@@ -82,11 +167,13 @@ private:
 	vector<double> intermediate_central_values;
 	int total_points = 0;
 	int total_values;
+	int change;
 
 public:
 	Cluster(int id_cluster, Point point)
 	{
 		this->id_cluster = id_cluster;
+		this->change = 0;
 
 		total_values = point.getTotalValues();
 		
@@ -108,10 +195,10 @@ public:
 	void resolveSums(Cluster other) {
 		this->total_points = other.total_points;
 		for (int i = 0; i < total_values; i++) {
-			cout << "resolving" << endl;
-			cout << "Value " << i << " before resolving: " << this->intermediate_central_values[i] << endl;
+			// cout << "resolving" << endl;
+			// cout << "Value " << i << " before resolving: " << this->intermediate_central_values[i] << endl;
 			this->intermediate_central_values[i] = 0.0;
-			cout << "Value " << i << " after resolving: " << this->intermediate_central_values[i] << endl;
+			// cout << "Value " << i << " after resolving: " << this->intermediate_central_values[i] << endl;
 		}
 	}
 
@@ -135,6 +222,7 @@ public:
 
 	void getAllIntermediateValues() {
 		for (int i = 0; i < total_values; i++) {
+			//cout << "Total Values and Iteration: " << total_values << " " << i << endl;
 			cout << this->intermediate_central_values[i] << " ";
 		}
 		cout << "\n\n";
@@ -164,6 +252,22 @@ public:
 	int getID()
 	{
 		return this->id_cluster;
+	}
+
+	Cluster& operator+=(View view) {
+		int index = this->id_cluster;
+		this->total_points += view.getTotalPoints(index);
+		//this->change += view.getChange();
+		//cout << "What cluster are we in: " << index << endl;
+		vector<double> intermediates = view.getIntermediateCentralValues(index);
+		//cout << "Intermediate Central Values Being added in: " << endl;
+		for (int j = 0; j < total_values; j++) {
+			//cout << "TLS value being added in: " << intermediates[j] << endl;
+			//cout << "Intermediate Central Values Before Addition: " << this->intermediate_central_values[j] << endl;
+			this->intermediate_central_values[j] += intermediates[j];
+			//cout << "Intermediate Central Values After Addition: " << this->intermediate_central_values[j] << endl;
+		}
+		return *this;
 	}
 };
 
@@ -254,10 +358,10 @@ public:
         auto end_phase1 = chrono::high_resolution_clock::now();
         
 		int iter = 1;
-		tbb::enumerable_thread_specific<vector<Cluster>> cluster_tls(clusters.begin(), clusters.end());
+		//tbb::enumerable_thread_specific<vector<Cluster>> cluster_tls(clusters.begin(), clusters.end());
 		tbb::enumerable_thread_specific<int> id_old_cluster_tls;
 		tbb::enumerable_thread_specific<int> id_nearest_center_tls;
-		tbb::enumerable_thread_specific<int> cluster_change_tls;
+		tbb::enumerable_thread_specific<View> tls_views;
 		int cluster_change_count;
 	
         // Stop the loop when the maximum number of iterations is reached or the points are assigned to the nearest cluster center
@@ -266,45 +370,47 @@ public:
 			cluster_change_count = 0;
 			// cout << "------------------------" << endl;
 			// cout << "Iteration: " << iter << "\n\n";
-			// cout << "Real Intermediate Values Before Reassociation: " << endl;
+			// // cout << "Real Intermediate Values Before Reassociation: " << endl;
 			// for(int i = 0; i < K; i++) {
-			// 	cout << "Cluster: " << i << endl;
+			// 	// cout << "Cluster: " << i << endl;
 			// 	clusters[i].getAllIntermediateValues();
 			// }
 
-			// cout << "TLS Intermediate Values Before Reassociation: " << endl;
+			// // cout << "TLS Intermediate Values Before Reassociation: " << endl;
 			// int count = 0;
-			// for(auto i = cluster_tls.begin(); i != cluster_tls.end(); i++) {
-			// 	vector<Cluster> c = *i;
-			// 	cout << "Cluster Vec: " << count << endl;
-			// 	for(int k = 0; k < K; k++) {
-			// 		cout << "Cluster: " << k << endl;
-			// 		c[k].getAllIntermediateValues();
-			// 	}
+			// for(auto i = tls_views.begin(); i != tls_views.end(); i++) {
+			// 	View v = *i;
+			// 	cout << "TLS View: " << count << endl;
+			// 	v.getAllIntermediateValues();
 			// 	count++;
 			// }
 
 			// resolve intermediate cluster sums to global cluster sums	
-			count = 0;
-			for(auto i = cluster_tls.begin(); i != cluster_tls.end(); ++i) {
-				vector<Cluster> c = *i;
-				//cout << "Cluster Vec: " << count << endl;
-				for (int j = 0; j < K; j++) {
-					// cout << "Cluster: " << j << endl;
-					// cout << "Real Intermediate Values Before Reduction: " << endl;
-					// clusters[j].getAllIntermediateValues();
-					clusters[j].reduceSums(c[j]);
+			for(auto i = tls_views.begin(); i != tls_views.end(); i++) {
+				View v = *i;
+				for(int j = 0; j < K; j++) {
+					//cout << "Real Intermediate Values Before Reduction: " << endl;
+					//clusters[j].getAllIntermediateValues();
+					clusters[j] += v;
 					// cout << "Real Intermediate Values After Reduction: " << endl;
 					// clusters[j].getAllIntermediateValues();
 
 					// cout << "TLS Intermediate Values Before Resolution: " << endl;
-					// c[j].getAllIntermediateValues();
-					c[j].resolveSums(clusters[j]);
-					// cout << "TLS Intermediate Values After Resolution: " << endl;
-					// c[j].getAllIntermediateValues();
+					// v.getAllIntermediateValues();
+					
 				}
-				count++;
 			}
+
+			for(auto& v : tls_views) {
+				v.reset();
+			}
+
+			// for(auto i = tls_views.begin(); i != tls_views.end(); i++) {
+			// 	View v = *i;
+			// 	cout << "TLS Intermediate Values After Resolution: " << endl;
+			// 	v.getAllIntermediateValues();
+			// }
+			
 
 			// recalculating the center of each cluster
 			for(int i = 0; i < K; i++) {
@@ -331,13 +437,14 @@ public:
 
 						id_old_cluster_tls.local() = points[i].getCluster(); // get the cluster designation of point i
 						id_nearest_center_tls.local() = getIDNearestCenter(points[i]); // calculate the nearest cluster by Euclidian distance of point i
-
+						
 						// if the cluster is anything other than the nearest cluster, remove the point from the old cluster and add it to the nearest cluster
 						if(id_old_cluster_tls.local() != id_nearest_center_tls.local()) {
 							//if the point has already been assigned a cluster, remove it from the old cluster
 							if(id_old_cluster_tls.local() != -1) {
-								cluster_tls.local()[id_old_cluster_tls.local()].removePoint(points[i]);
+								tls_views.local().removePoint(points[i], id_old_cluster_tls.local());
 							}
+							
 							points[i].setCluster(id_nearest_center_tls.local()); // assign the point to a cluster
 							
 							// cout << "------------------------" << endl;
@@ -345,21 +452,22 @@ public:
 							// cout << "TLS intermediate value before addition: " << endl;
 							//cluster_tls.local()[id_nearest_center_tls.local()].getAllIntermediateValues();
 
-							cluster_tls.local()[id_nearest_center_tls.local()].addPoint(points[i]); // add the point to the nearest cluster
-							
+							tls_views.local().addPoint(points[i], id_nearest_center_tls.local()); // add the point to the nearest cluster
+							//cout << iter << endl;
 							//cout << "TLS intermediate value after addition: " << endl;
 							//cluster_tls.local()[id_nearest_center_tls.local()].getAllIntermediateValues();
 
-							cluster_change_tls.local()++; // set done to false to continue the loop as the clusters were not finalized in successive iterations
+							//cluster_change_tls.local()++; // set done to false to continue the loop as the clusters were not finalized in successive iterations
 						}
 					}
 				}
 			);
 
 			// resolve change count and reset cluster_change_tls
-			for (auto i = cluster_change_tls.begin(); i != cluster_change_tls.end(); ++i) {
-				cluster_change_count += *i;
-				*i = 0;
+			for (auto i = tls_views.begin(); i != tls_views.end(); ++i) {
+				View v = *i;
+				int s = v.getChange();
+				cluster_change_count += s;
 			}
 
 			auto end_phase3 = chrono::high_resolution_clock::now();
