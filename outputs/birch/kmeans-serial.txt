@@ -1,0 +1,204 @@
+Break in iteration 102
+
+TOTAL EXECUTION TIME = 1912590
+
+Cluster values: 375208 546320 
+
+Cluster values: 728493 410193 
+
+Cluster values: 835541 169279 
+
+Cluster values: 316836 630024 
+
+Cluster values: 636580 450866 
+
+Cluster values: 157764 544133 
+
+Cluster values: 452456 446639 
+
+Cluster values: 634379 172149 
+
+Cluster values: 911367 450437 
+
+Cluster values: 906361 123622 
+
+Cluster values: 447490 221619 
+
+Cluster values: 913784 709800 
+
+Cluster values: 78407.3 249311 
+
+Cluster values: 373718 449416 
+
+Cluster values: 80346 292784 
+
+Cluster values: 911621 70780.4 
+
+Cluster values: 727741 281689 
+
+Cluster values: 367465 909619 
+
+Cluster values: 542788 358154 
+
+Cluster values: 115261 730130 
+
+Cluster values: 633372 81112.1 
+
+Cluster values: 319444 817655 
+
+Cluster values: 541651 635530 
+
+Cluster values: 349965 265921 
+
+Cluster values: 725266 631209 
+
+Cluster values: 77403.9 636443 
+
+Cluster values: 812391 635339 
+
+Cluster values: 727281 81411.7 
+
+Cluster values: 817595 818001 
+
+Cluster values: 912819 182484 
+
+Cluster values: 450883 820137 
+
+Cluster values: 451065 634116 
+
+Cluster values: 78616 361124 
+
+Cluster values: 450389 911820 
+
+Cluster values: 634339 632740 
+
+Cluster values: 910781 357055 
+
+Cluster values: 542491 909742 
+
+Cluster values: 747274 727694 
+
+Cluster values: 453144 541772 
+
+Cluster values: 639966 358689 
+
+Cluster values: 628435 726626 
+
+Cluster values: 911838 822321 
+
+Cluster values: 817526 79870.7 
+
+Cluster values: 317473 723995 
+
+Cluster values: 793095 185703 
+
+Cluster values: 543125 817920 
+
+Cluster values: 726642 820682 
+
+Cluster values: 369206 727324 
+
+Cluster values: 447851 345649 
+
+Cluster values: 450894 724647 
+
+Cluster values: 448862 93112.5 
+
+Cluster values: 540068 727606 
+
+Cluster values: 80207.3 449737 
+
+Cluster values: 352149 172889 
+
+Cluster values: 346938 357144 
+
+Cluster values: 909659 542351 
+
+Cluster values: 634860 818261 
+
+Cluster values: 92505.5 96650.5 
+
+Cluster values: 324704 449948 
+
+Cluster values: 158923 642466 
+
+Cluster values: 157968 355768 
+
+Cluster values: 161419 864732 
+
+Cluster values: 97013.6 174259 
+
+Cluster values: 727344 911923 
+
+Cluster values: 818608 912377 
+
+Cluster values: 817580 448978 
+
+Cluster values: 702383 724720 
+
+Cluster values: 542442 80556.8 
+
+Cluster values: 820158 267297 
+
+Cluster values: 726570 530319 
+
+Cluster values: 78467.5 542195 
+
+Cluster values: 538750 173445 
+
+Cluster values: 159024 450080 
+
+Cluster values: 366387 635969 
+
+Cluster values: 814888 357521 
+
+Cluster values: 924521 631206 
+
+Cluster values: 911460 267398 
+
+Cluster values: 316263 914296 
+
+Cluster values: 911917 910359 
+
+Cluster values: 632516 543062 
+
+Cluster values: 876957 635480 
+
+Cluster values: 368133 819828 
+
+Cluster values: 543669 450485 
+
+Cluster values: 79635.5 813727 
+
+Cluster values: 906739 752249 
+
+Cluster values: 818838 541430 
+
+Cluster values: 634615 911167 
+
+Cluster values: 59495.4 174637 
+
+Cluster values: 348325 81470.6 
+
+Cluster values: 66423.5 68547.4 
+
+Cluster values: 159092 79519.1 
+
+Cluster values: 536580 266208 
+
+Cluster values: 161027 171449 
+
+Cluster values: 542515 544278 
+
+Cluster values: 720589 175019 
+
+Cluster values: 85992.2 912454 
+
+Cluster values: 633105 266129 
+
+Cluster values: 157933 264797 
+
+Cluster values: 821079 725732 
+
+Cluster values: 327430 536645 
+

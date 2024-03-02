@@ -135,5 +135,7 @@ obj64/better-kmeans-parallel-tls.o: src/better-kmeans-parallel-tls.cpp \
  /opt/tbb-2021.8.0/include/oneapi/tbb/tbb_allocator.h \
  /opt/tbb-2021.8.0/include/oneapi/tbb/tick_count.h \
  /opt/tbb-2021.8.0/include/oneapi/tbb/version.h \
+ /opt/tbb-2021.8.0/include/tbb/tbb_allocator.h \
+ /opt/tbb-2021.8.0/include/tbb/../oneapi/tbb/tbb_allocator.h \
  /opt/tbb-2021.8.0/include/tbb/enumerable_thread_specific.h \
  /opt/tbb-2021.8.0/include/tbb/../oneapi/tbb/enumerable_thread_specific.h

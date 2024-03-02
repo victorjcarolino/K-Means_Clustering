@@ -1,0 +1,68 @@
+Break in iteration 127
+
+TOTAL EXECUTION TIME = 183837
+
+Cluster values: 52.5519 14.0038 15.3805 
+
+Cluster values: 47.8758 56.5431 58.1827 
+
+Cluster values: 84.2057 83.2117 12.3081 
+
+Cluster values: 13.4922 50.7846 12.5612 
+
+Cluster values: 49.4425 44.7217 85.5103 
+
+Cluster values: 17.3585 85.9325 85.0148 
+
+Cluster values: 16.052 15.751 84.0735 
+
+Cluster values: 83.7818 50.3677 15.8794 
+
+Cluster values: 15.6364 15.3605 15.3953 
+
+Cluster values: 16.8384 55.9199 39.7001 
+
+Cluster values: 35.6809 34.8757 22.6661 
+
+Cluster values: 47.4096 16.1423 52.1774 
+
+Cluster values: 81.194 18.5084 63.8482 
+
+Cluster values: 14.8698 82.8172 55.0628 
+
+Cluster values: 16.8823 84.7218 18.2561 
+
+Cluster values: 81.82 82.2041 37.5255 
+
+Cluster values: 82.4692 52.5785 83.6452 
+
+Cluster values: 15.1093 14.7062 47.4354 
+
+Cluster values: 16.2026 54.6241 85.8732 
+
+Cluster values: 84.1145 84.7219 88.2969 
+
+Cluster values: 17.4525 39.7897 62.7738 
+
+Cluster values: 81.7667 82.6038 62.764 
+
+Cluster values: 49.2395 59.5322 14.468 
+
+Cluster values: 46.6176 85.0508 47.7656 
+
+Cluster values: 49.6751 14.132 84.2007 
+
+Cluster values: 84.7313 16.8999 12.2601 
+
+Cluster values: 84.1677 18.1988 88.1617 
+
+Cluster values: 83.4378 14.9095 38.1498 
+
+Cluster values: 63.243 41.4937 36.3424 
+
+Cluster values: 50.0291 82.5611 83.7736 
+
+Cluster values: 86.6047 49.8922 51.2805 
+
+Cluster values: 50.7821 87.0171 16.1729 
+

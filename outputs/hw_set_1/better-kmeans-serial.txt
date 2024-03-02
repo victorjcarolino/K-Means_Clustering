@@ -1,0 +1,8 @@
+Break in iteration 2
+
+TOTAL EXECUTION TIME = 7
+
+Cluster values: 1.25 1.5 
+
+Cluster values: 3.9 5.1 
+

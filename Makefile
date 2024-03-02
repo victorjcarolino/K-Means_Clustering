@@ -1,8 +1,9 @@
 # File being made
-FILE := better-kmeans-parallel-tls
+FILE := kmeans-parallel
 
 # kmeans-serial
-# new-wave-kmeans-parallel
+# better-kmeans-serial
+# kmeans-parallel
 
 # Compiler
 CXX := g++

@@ -328,9 +328,7 @@ public:
 			iter++;
 		}
         auto end = chrono::high_resolution_clock::now();
-
-		std::chrono::microseconds time_phase_associate = std::accumulate(times1.begin(), times1.end(), std::chrono::microseconds(0));
-		std::chrono::microseconds time_phase_recalculate = std::accumulate(times2.begin(), times2.end(), std::chrono::microseconds(0));
+		cout << "TOTAL EXECUTION TIME = "<<std::chrono::duration_cast<std::chrono::microseconds>(end-begin).count()<<"\n\n";
 
 		// shows elements of clusters
 		for(int i = 0; i < K; i++)
@@ -358,14 +356,13 @@ public:
 				cout << clusters[i].getCentralValue(j) << " ";
 
 			cout << "\n\n";
-            cout << "TOTAL EXECUTION TIME = "<<std::chrono::duration_cast<std::chrono::microseconds>(end-begin).count()<<"\n";
-            
-            cout << "TIME PHASE 1 = "<<std::chrono::duration_cast<std::chrono::microseconds>(end_phase1-begin).count()<<"\n";
-            
-            cout << "TIME PHASE 2 = "<<std::chrono::duration_cast<std::chrono::microseconds>(end-end_phase1).count()<<"\n";
 
-			cout << "TIME PHASE ASSOCIATE = " << time_phase_associate.count() << endl;
-			cout << "TIME PHASE RECALCULATE = " <<  time_phase_recalculate.count() << endl;
+            // cout << "TIME PHASE 1 = "<<std::chrono::duration_cast<std::chrono::microseconds>(end_phase1-begin).count()<<"\n";
+            
+            // cout << "TIME PHASE 2 = "<<std::chrono::duration_cast<std::chrono::microseconds>(end-end_phase1).count()<<"\n";
+
+			// cout << "TIME PHASE ASSOCIATE = " << time_phase_associate.count() << endl;
+			// cout << "TIME PHASE RECALCULATE = " <<  time_phase_recalculate.count() << endl;
 		}
 	}
 };
@@ -374,10 +371,7 @@ int main(int argc, char *argv[])
 {
 	int total_points, total_values, K, max_iterations, has_name;
 
-	string filename = "datasets/";
-    string dataset = argv[1];
-    filename.insert(filename.end(), dataset.begin(), dataset.end());
-
+    string filename = argv[1];
 	ifstream inputFile(filename);
 
 	if (!inputFile) {
