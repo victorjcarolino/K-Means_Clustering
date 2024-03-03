@@ -18,8 +18,8 @@
 
 using namespace std;
 
-const int constK = 32;
-const int const_total_values = 3;
+const int constK = 17;
+const int const_total_values = 16;
 
 class Point
 {
