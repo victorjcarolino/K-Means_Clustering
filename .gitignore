@@ -2,6 +2,8 @@
 build/
 dist/
 bin/
+obj64/
+results/
 
 # Ignore dependency directories
 node_modules/

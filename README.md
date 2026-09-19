@@ -71,4 +71,47 @@ https://docs.google.com/spreadsheets/d/1ZcLFo0Y49qIlUCRqSpkb2Dtbx0JHtt5JW1wI-EmI
         - serial: outputs/[output-subdirectory]/kmeans-serial.txt
         - better serial: outputs/[output-subdirectory]/better-kmeans-serial.txt 
         - parallel: outputs/[output-subdirectory]/kmeans-parallel.txt
+# Parallel K-means: optimization and thread-local aggregation
 
+A C++ study comparing a provided serial baseline, an optimized serial implementation, and an Intel oneTBB parallel implementation. The parallel version distributes point assignment across threads and reduces thread-local cluster updates.
+
+## Results and interpretation
+
+Historical timings below are from the committed `outputs/` files, in microseconds. These are individual recorded runs, not repeated-run medians or claims about the revised code. Hardware, thread count, and toolchain were not recorded alongside these files. Printed centroids match across all three implementations on all eight recorded datasets; this is not a general correctness proof.
+
+| Dataset | Baseline | Optimized serial | Parallel | Baseline / parallel | Optimized / parallel |
+|---|---:|---:|---:|---:|---:|
+| Apple quality | 35,872 | 8,768 | 6,186 | 5.80× | 1.42× |
+| Beans | 1,629,905 | 408,037 | 124,109 | 13.13× | 3.29× |
+| Big one | 2,184,938 | 733,230 | 183,837 | 11.89× | 3.99× |
+| Birch | 1,912,590 | 1,166,905 | 611,572 | 3.13× | 1.91× |
+| Gaussian distribution | 76,342 | 19,310 | 5,384 | 14.18× | 3.59× |
+| HW set 1 | 9 | 7 | 354 | 0.03× | 0.02× |
+| HW set 2 | 90 | 27 | 457 | 0.20× | 0.06× |
+| Pulsar | 216,142 | 9,706 | 4,202 | 51.44× | 2.31× |
+
+**51.44× is the combined improvement over the provided baseline, not the gain from parallelization alone.** Relative to optimized serial, the recorded Pulsar improvement is 2.31×. Tiny inputs are slower in parallel because scheduling overhead dominates.
+
+## Build, run, and check
+
+Requirements: C++17 compiler, make, Intel oneTBB, pkg-config, and Python 3 for tests. For example, install `libtbb-dev pkg-config` on Debian/Ubuntu or `tbb pkg-config` with Homebrew.
+
+```sh
+make
+make test
+sh run.sh datasets/pulsar.txt results/pulsar
+```
+
+Run from the repository root. The runner writes to the supplied output directory without modifying source or the Makefile. Override `TBB_CFLAGS` and `TBB_LIBS` if pkg-config cannot locate a custom installation. Do not overwrite historical `outputs/` when measuring changes.
+
+The header is `points dimensions clusters max_iterations has_name`, followed by feature rows and an optional name per row. Initialization uses deterministic seeds within a given C library; random sequences may differ between platforms. Empty clusters retain their previous centroid.
+
+## Attribution and scope
+
+Original serial algorithm: [marcoscastro/kmeans](https://github.com/marcoscastro/kmeans). This repository explores incremental sums and thread-local parallel aggregation on top of that baseline. It is an educational performance project, not a production clustering library.
+
+For new measurements, record the commit, CPU, core/thread limits, compiler flags, oneTBB version, dataset, initialization, warmups, repetitions, and median/dispersion. Check output equivalence before comparing timing.
+
+## Original project notes
+
+Historical notes below are retained for context. Use the build/run commands above for the current runner; its second argument is now the complete output directory.

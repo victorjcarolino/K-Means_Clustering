@@ -145,6 +145,8 @@ public:
 	}
 
 	void setCentralValues() {
+		// Preserve the previous centroid when a cluster becomes empty.
+		if (total_points == 0) return;
 		// cout << "Total Points check: " << this->total_points << endl;
 		for (int i = 0; i < total_values; i++) {
 			// cout << "Intermediate value " << i << " before reassigning: " << this->intermediate_central_values[i] << endl;
@@ -369,6 +371,10 @@ public:
 
 int main(int argc, char *argv[])
 {
+	if (argc != 2) {
+		cerr << "Usage: " << argv[0] << " DATASET\n";
+		return 1;
+	}
 	int total_points, total_values, K, max_iterations, has_name;
 
     string filename = argv[1];
@@ -379,11 +385,12 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	inputFile >> total_points;
-	inputFile >> total_values;
-	inputFile >> K;
-	inputFile >> max_iterations;
-	inputFile >> has_name;
+	if (!(inputFile >> total_points >> total_values >> K >> max_iterations >> has_name)
+		|| total_points <= 0 || total_values <= 0 || K <= 0 || K > total_points
+		|| max_iterations <= 0 || (has_name != 0 && has_name != 1)) {
+		cerr << "Invalid dataset header\n";
+		return 1;
+	}
 
 	vector<Point> points;
 	string point_name;
@@ -395,13 +402,19 @@ int main(int argc, char *argv[])
 		for(int j = 0; j < total_values; j++)
 		{
 			double value;
-			inputFile >> value;
+			if (!(inputFile >> value) || !std::isfinite(value)) {
+				cerr << "Missing or non-finite feature value\n";
+				return 1;
+			}
 			values.push_back(value);
 		}
 
 		if(has_name)
 		{
-			inputFile >> point_name;
+			if (!(inputFile >> point_name)) {
+				cerr << "Missing point name\n";
+				return 1;
+			}
 			Point p(i, values, point_name);
 			points.push_back(p);
 		}

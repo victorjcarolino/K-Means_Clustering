@@ -18,8 +18,6 @@
 
 using namespace std;
 
-const int constK = 32;
-const int const_total_values = 3;
 
 class Point
 {
@@ -80,6 +78,8 @@ public:
 
 class View {
   private:
+	int constK;
+	int const_total_values;
 	struct view {
 		vector<int> total_points; // keep track of total points;
 		int change; // keep track of the number of changes
@@ -91,7 +91,7 @@ class View {
 	};
 	view view;
   public:
-	View() {
+	View(int clusters, int dimensions) : constK(clusters), const_total_values(dimensions) {
 		this->view.total_points = vector<int>(constK);
 		for (int i = 0; i < constK; i++) {
 			this->view.total_points[i] = 0;
@@ -196,6 +196,8 @@ public:
 	}
 
 	void setCentralValues() {
+		// Preserve the previous centroid when a cluster becomes empty.
+		if (total_points == 0) return;
 		for (int i = 0; i < total_values; i++) {
 			this->central_values[i] = this->intermediate_central_values[i] / this->total_points;
 		}
@@ -313,7 +315,7 @@ public:
 		//tbb::enumerable_thread_specific<vector<Cluster>> cluster_tls(clusters.begin(), clusters.end());
 		tbb::enumerable_thread_specific<int> id_old_cluster_tls;
 		tbb::enumerable_thread_specific<int> id_nearest_center_tls;
-		tbb::enumerable_thread_specific<View> tls_views;
+		tbb::enumerable_thread_specific<View> tls_views([&] { return View(K, total_values); });
 		bool not_done = true;
 	
         // Stop the loop when the maximum number of iterations is reached or the points are assigned to the nearest cluster center
@@ -373,6 +375,10 @@ public:
 
 			if(not_done == false || iter >= max_iterations)
 			{
+				// Apply final deltas even when the iteration limit is hit.
+				for (auto& view : tls_views)
+					for (int j = 0; j < K; ++j) clusters[j] += view;
+				for (auto& cluster : clusters) cluster.setCentralValues();
 				cout << "Break in iteration " << iter << "\n\n";
 				break;
 			}
@@ -421,6 +427,10 @@ public:
 
 int main(int argc, char *argv[])
 {
+	if (argc != 2) {
+		cerr << "Usage: " << argv[0] << " DATASET\n";
+		return 1;
+	}
 	int total_points, total_values, K, max_iterations, has_name;
 
 	string filename = argv[1];
@@ -431,11 +441,12 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	inputFile >> total_points;
-	inputFile >> total_values;
-	inputFile >> K;
-	inputFile >> max_iterations;
-	inputFile >> has_name;
+	if (!(inputFile >> total_points >> total_values >> K >> max_iterations >> has_name)
+		|| total_points <= 0 || total_values <= 0 || K <= 0 || K > total_points
+		|| max_iterations <= 0 || (has_name != 0 && has_name != 1)) {
+		cerr << "Invalid dataset header\n";
+		return 1;
+	}
 
 	vector<Point> points;
 	string point_name;
@@ -447,13 +458,19 @@ int main(int argc, char *argv[])
 		for(int j = 0; j < total_values; j++)
 		{
 			double value;
-			inputFile >> value;
+			if (!(inputFile >> value) || !std::isfinite(value)) {
+				cerr << "Missing or non-finite feature value\n";
+				return 1;
+			}
 			values.push_back(value);
 		}
 
 		if(has_name)
 		{
-			inputFile >> point_name;
+			if (!(inputFile >> point_name)) {
+				cerr << "Missing point name\n";
+				return 1;
+			}
 			Point p(i, values, point_name);
 			points.push_back(p);
 		}
